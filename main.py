@@ -13,16 +13,13 @@ from fastapi.exception_handlers import (
     request_validation_exception_handler,
 )
 import models
-from database import get_db, Base, engine
+from database import get_db, engine
 from routers import users, posts
 from config import settings
 
 
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
-    # Startup
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
     yield
     # Shutdown
     await engine.dispose()
