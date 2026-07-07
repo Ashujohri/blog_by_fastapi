@@ -10,6 +10,13 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     
+    # S3 Configuration
+    S3_BUCKET_NAME: str
+    S3_REGION: str = "ap-south-1"
+    S3_ACCESS_KEY_ID: SecretStr | None = None
+    S3_SECRET_ACCESS_KEY: SecretStr | None = None
+    S3_ENDPOINT_URL: str | None = None
+    
     MAX_UPLOAD_SIZE_BYTES: int = 5 * 1024 * 1024
     
     POSTS_PER_PAGE: int = 10
